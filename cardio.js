@@ -91,7 +91,10 @@ function sortByLastName(people) {
  * @param {Array} people Array of names
  * @return Number of characters
  */
-function countTotalCharacters(people) {}
+function countTotalCharacters(people) {
+  const people2 = people.reduce((count, person) => count + person.length, 0);
+  return people2;
+}
 
 /**
  * Returns `true` if everyone in `people` has `letter` in their name.
@@ -100,7 +103,22 @@ function countTotalCharacters(people) {}
  * @param {string} letter
  * @returns {boolean}
  */
-function everyoneHasLetter(people, letter) {}
+function everyoneHasLetter(people, letter) {
+  const numPeople = people.length;
+  let everyoneHas = false;
+
+  const trueCount = people.reduce((count, person) => {
+    if (person.includes(letter)) {
+      return count + 1;
+    }
+    return count;
+  }, 0);
+
+  if (trueCount === numPeople) {
+    everyoneHas = true;
+  }
+  return everyoneHas;
+}
 
 /**
  * Returns `true` if at least one person has `letter` in their name.
@@ -109,7 +127,15 @@ function everyoneHasLetter(people, letter) {}
  * @param {string} letter
  * @returns {boolean}
  */
-function someoneHasLetter(people, letter) {}
+function someoneHasLetter(people, letter) {
+  let hasLetter = false;
+  people.forEach(person => {
+    if (person.includes(letter)) {
+      hasLetter = true;
+    }
+  });
+  return hasLetter;
+}
 
 module.exports = {
   filterByLength,
