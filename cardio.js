@@ -79,11 +79,9 @@ function sortByFirstName(people) {
  * @returns {string[]} sorted array
  */
 function sortByLastName(people) {
-  const people2 = [...people];
-  // eslint-disable-next-line prettier/prettier
-  const people3 = people2.sort((left, right) => left.split(' ')[1] > right.split(' ')[1] ? -1 : 1);
-  people3.reverse();
-  return people3;
+  return [...people].sort((left, right) =>
+    left.split(' ')[1] > right.split(' ')[1] ? 1 : -1
+  );
 }
 
 /**
